@@ -3,15 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dosis:wght@200..800&family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Sigmar&display=swap');
+        body {
+            background: #1c3b2c;
+            background-image: url(/uploads/Tree.png);
+            background-size: 6%;
+            background-position-x: 2%;
+            background-position-y: 5%;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 30%;
+            margin: -190px 10% 30px 50%;
+        }
+        p {
+            color: #63f7b0;
+            font-weight: bold;
+            margin: 30px 5% 30px 20%;
+        }
+        #first-p {
+            margin-top: 100px;
+        }
+        h1 {
+            margin: 60px 0px 60px 0px;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+            text-align: center;
+        }
+
+        h2 {
+            margin: -60px 16% 60px 9%;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+        }
+        .input-text {
+            background: #63f7b0;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: left;
+            text-decoration: none;
+            color: #1c3b2c;
+            height: 40px;
+            width: 40%;
+            margin: 15px 30% 15px 30%;
+        }
+        button {
+            background: #9c2217;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: center;
+            text-decoration: none;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 200px;
+            color: yellow;
+            height: 60px;
+            width: 20%;
+            margin: 30px 40% 15px 40%;
+        }
+        #signOut {
+            width: 15%;
+            height: 40px;
+            margin: 30px 5% 30px 80%;
+        }
+        ::file-selector-button {
+            border: 2px solid #63f7b0;
+            color: #63f7b0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #1c3b2c;
+        }
+        #inputFile {
+            float: center;
+            background-color: none;
+            height: 40px;
+            width: 40%;
+            margin: 15px 30% 15px 30%;
+            color: #63f7b0;
+        }
+    </style>
 </head>
 <body>
-    <h2>Добро пожаловать, <span th:text="${user.firstName}"></span>!</h2>
-    <p>Фамилия: <span th:text="${user.secondName}"></span></p>
-    <p>Пароль: <span th:text="${user.password}"></span></p>
+
+    <a href="/">
+        <button id="signOut">Sign out</button>
+    </a>
+    <h2>HOWDY</h2>
+    <p id="first-p">First Name:<span th:text="${user.userName}"></span></p>
+    <p>User_Name: <span th:text="${user.firstName}"></span></p>
+    <p>Last Name: <span th:text="${user.secondName}"></span></p>
+    <p>Password: <span th:text="${user.password}"></span></p>
     <img th:src="@{${user.imagePath}}" alt="User image" width="200">
 
 
-    <a href="/">Вернуться на главную</a>
-    <a href="/chat">Chat</a>
+
+    <a href="/chat">
+        <button>Chat</button>
+    </a>
 </body>
 </html>

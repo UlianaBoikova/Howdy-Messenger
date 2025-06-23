@@ -13,13 +13,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String firstName, secondName, password;
+    private String userName, firstName, secondName, password;
     private String imagePath;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MessageFromTo> messengers = new ArrayList<>();
 
-    public User(String firstName, String secondName, String password) {
+    public User(String userName, String firstName, String secondName, String password) {
+        this.userName = userName;
         this.firstName = firstName;
         this.secondName = secondName;
         this.password = password;
@@ -44,12 +45,19 @@ public class User {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
 
     public String getSecondName() {
         return secondName;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getPassword() {
@@ -78,8 +86,8 @@ public class User {
 
 
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setSecondName(String secondName) {

@@ -3,18 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dosis:wght@200..800&family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Sigmar&display=swap');
+        body {
+            background: #1c3b2c;
+            background-image: url(/uploads/Tree.png);
+            background-size: 6%;
+            background-position-x: 2%;
+            background-position-y: 5%;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            margin: -130px 16% 60px 9%;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+        }
+        h1 {
+            margin: 60px 0px 60px 0px;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+            text-align: center;
+        }
+
+        input {
+            background: #63f7b0;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: left;
+            text-decoration: none;
+            color: #1c3b2c;
+            height: 60px;
+            width: 40%;
+            margin: 60px 30% 60px 30%;
+        }
+        button {
+            background: #9c2217;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: center;
+            text-decoration: none;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 200px;
+            color: yellow;
+            height: 60px;
+            width: 20%;
+            margin: 60px 40% 60px 40%;
+        }
+    </style>
 </head>
 <body>
 <body>
-<h2>Вход</h2>
+<h1>Sign in</h1>
+<h2>HOWDY</h2>
 <form action="/enter" method="post">
-    <label for="firstName">Имя:</label>
-    <input type="text" id="firstName" name="firstName" required><br><br>
+    <input type="text" id="userName" name="userName" placeholder="user_name" aria-valuemax="20" required><br><br>
 
-    <label for="password">Пароль:</label>
-    <input type="password" id="password" name="password" required><br><br>
 
-    <button type="submit">Войти</button>
+    <input type="password" id="password" name="password" placeholder="password" aria-valuemin="3" aria-valuemax="20" required><br><br>
+
+    <button type="submit">Enter</button>
 </form>
 <p th:if="${error}" th:text="${error}" style="color:red;"></p>
 </body>

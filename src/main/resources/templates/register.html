@@ -3,16 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dosis:wght@200..800&family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Sigmar&display=swap');
+        body {
+            background: #1c3b2c;
+            background-image: url(/uploads/Tree.png);
+            background-size: 6%;
+            background-position-x: 2%;
+            background-position-y: 5%;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            margin: -130px 16% 60px 9%;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+        }
+        h1 {
+            margin: 60px 0px 60px 0px;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+            text-align: center;
+        }
+
+        .input-text {
+            background: #63f7b0;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: left;
+            text-decoration: none;
+            color: #1c3b2c;
+            height: 40px;
+            width: 40%;
+            margin: 15px 30% 15px 30%;
+        }
+        button {
+            background: #9c2217;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: center;
+            text-decoration: none;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 200px;
+            color: yellow;
+            height: 60px;
+            width: 20%;
+            margin: 30px 40% 15px 40%;
+        }
+        ::file-selector-button {
+            border: 2px solid #63f7b0;
+            color: #63f7b0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #1c3b2c;
+        }
+        #inputFile {
+            float: center;
+            background-color: none;
+            height: 40px;
+            width: 40%;
+            margin: 15px 30% 15px 30%;
+            color: #63f7b0;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Add article</h1>
+    <h1>Registration</h1>
+    <h2>HOWDY</h2>
     <form action="/register" method="post" enctype="multipart/form-data">
-        <input class="input-text" type="firstName" name="firstName" placeholder="Enter the title of the article"><br>
-        <input class="input-text" type="secondName" name="secondName" placeholder="Enter a blurb for the article"><br>
-        <input class="input-text" type="password" name="password" placeholder="Enter a blurb for the article"><br>
-        <input type="file" name="image"><br>
+        <input class="input-text" type="text" name="userName" aria-valuemin="3" aria-valuemax="20" placeholder="user_name"><br>
+        <input class="input-text" type="text" name="firstName" aria-valuemin="3" aria-valuemax="20" placeholder="First Name"><br>
+        <input class="input-text" type="text" name="secondName" aria-valuemin="3" aria-valuemax="20" placeholder="Last Name"><br>
+        <input class="input-text" type="password" name="password" aria-valuemin="3" aria-valuemax="20" placeholder="password"><br>
+        <input id="inputFile" type="file" name="image"><br>
         <button type="submit" class="button"><p class="button-text">Add user</p></button>
     </form>
 </div>

@@ -4,18 +4,136 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dosis:wght@200..800&family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Sigmar&display=swap');
+        body {
+            background: #1c3b2c;
+            background-image: url(/uploads/Tree.png);
+            background-size: 6%;
+            background-position-x: 2%;
+            background-position-y: 2.5%;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        #howdy {
+            margin: -60px 16% 60px 9%;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+        }
+        label {
+            color: #ffff9c;
+            width: 130px;
+            float: left;
+            margin-left: 5%
+        }
+        p {
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin: 60px 0px 60px 0px;
+            color: #ffff9c;
+            text-align: center;
+        }
+
+        #chat {
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: #ffff9c;
+        }
+
+        #log {
+            text-align: left;
+            margin-left: 5%;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            color: #ffff9c;
+        }
+
+        #messages {
+            text-align: left;
+            margin-left: 5%;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            color: #ffff9c;
+        }
+
+        input {
+            background: #ffff9c;
+            border: 0px;
+            border-radius: 7px;
+            text-align: left;
+            text-decoration: none;
+            color: #1c3b2c;
+            height: 40px;
+            width: 25%;
+        }
+        button {
+            background: #9c2217;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: center;
+            text-decoration: none;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 200px;
+            color: #ffff9c;
+            width: 15%;
+            height: 40px;
+            margin: 20px 5% 20px 5%;
+        }
+        #signOut {
+            margin: 30px 5% 30px 80%;
+        }
+        #messageFromTo {
+            background: #ffff9c;
+            border: 1px;
+            border-radius: 7px;
+        }
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            margin: 0;
+        }
+        msg {
+            right: 10px;
+            margin: 0 10%;
+        }
+
+        .time {
+            margin: -100px 5% 30px 80%;
+        }
+    </style>
 </head>
 <body>
+<a href="/">
+    <button id="signOut">Sign out</button>
+</a>
+<h2 id="howdy">HOWDY</h2>
+<a href="/chat"><button>Back to chat</button></a>
 <div class="container">
-    <div th:each="entry : ${dialogue}">
-        <h3 th:text="'Диалог с: ' + ${entry.key.firstName}"></h3>
+    <ul th:each="entry : ${dialogue}">
+        <h3 id="userName" th:text="${entry.key.userName}"></h3>
         <img th:src="@{${entry.key.imagePath}}" alt="User image" width="200">
-        <ul>
-            <li th:each="msg : ${entry.value}">
-                <strong th:text="'From: ' + ${msg.userFrom} + ' → To: ' + ${msg.userTo}"></strong>
-                <p th:text="${msg.message} + '     ' + ${msg.exactTime}"></p>
-            </li>
-        </ul>
+
+        <div th:fragment="messenger">
+            <div th:each="person : ${dialogue}">
+                <div id="messages-container">
+                            <div th:each="msg : ${person.value}" class="messageFromTo">
+                                <strong class="textMessage" th:title="'From: ' + ${msg.userFrom}"></strong>
+                                <span class="msg" th:text="${msg.message} + '     ' + ${msg.exactTime}"></span>
+                                <br><br>
+                            </div>
+                </div>
+            </div>
+        </div>
+
+
         <form th:action="@{'/chat/' + ${entry.key.id}}" method="post">
 
             <label for="message">Message:</label>
@@ -23,12 +141,51 @@
 
             <button type="submit" class="button"><p class="button-text">send</p></button>
         </form>
-    </div>
-    <a href="/chat">Back to chat</a>
+    </ul>
+</div>
+
 
 </div>
 <script>
-    setInterval(() => window.location.reload(), 20000);
+    function loadMessagesFragment() {
+        design();
+        const pathParts = window.location.pathname.split("/");
+        const userId = pathParts[pathParts.length - 1];
+
+        fetch(`/chat/${userId}/messenger`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("messages-container").innerHTML = html;
+                design();
+            })
+            .catch(error => console.error('Error loading messages:', error));
+
+
+    }
+
+
+
+
+    function design() {
+        var msg = document.getElementsByClassName('msg');
+        var userName = document.getElementById('userName').innerHTML;
+
+        var messages = document.getElementsByClassName('textMessage');
+        for (var i = 0; i < messages.length; i++) {
+            if (messages[i].title.includes(userName)) {
+                msg[i].style.backgroundColor = "red";
+                msg[i].style.marginRight = "50%";
+            }
+            else {
+                msg[i].style.backgroundColor = "#ffff9c";
+                msg[i].style.marginLeft = "50%";
+            }
+        }
+    }
+    window.onload = function() {
+        design();
+    };
+    setInterval(loadMessagesFragment, 5000);
 </script>
 
 </body>

@@ -4,11 +4,37 @@
     <meta charset="UTF-8">
     <title>Harry Potter Blog</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dosis:wght@200..800&family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Sigmar&display=swap');
-
-        * {
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dosis:wght@200..800&family=Handlee&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Sigmar&display=swap');
+        body {
+            background: #1c3b2c;
+            background-image: url(/uploads/Tree.png);
+            background-size: 40%;
+            background-position-x: center;
+            background-position-y: 170px;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 0;
+        }
+        h1 {
+            margin: 60px 0px 60px 0px;
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: yellow;
+            text-align: center;
+        }
+
+        .buttons {
+            background: #63f7b0;
+            border: 0px;
+            border-radius: 7px;
+            float: center;
+            text-align: center;
+            text-decoration: none;
+            color: #1c3b2c;
+            height: 60px;
+            width: 40%;
+            margin: 60px 30% 60px 30%;
         }
 
         #blog-name {
@@ -40,7 +66,7 @@
             height: 100vh; /* Картинка будет растягиваться на всю высоту экрана */
             background-size: cover; /* Картинка будет полностью покрывать контейнер */
             background-attachment: fixed;
-            background-image: url('https://waytoomany.games/wp-content/uploads/2023/02/Fo1hKD_aAAA8x_9.jpg');
+            background-image: url('Tree.png');
             background-repeat: no-repeat;
             display: flex; /* Используем flexbox для центрирования текста */
             justify-content: center; /* Выравнивание по горизонтали */
@@ -152,12 +178,7 @@
             margin: 10px 20% 10px 20%;
         }
 
-        h1 {
-            font-family:   "Handlee", serif;
-            font-size: 40px;
-            text-align: center;
-            color: #050266;
-        }
+
 
 
 
@@ -324,8 +345,17 @@
     </style>
 </head>
 <body>
-    <a href="/enter">Enter</a>
-    <a href="/register">Register</a>
+<h1>HOWDY</h1>
+<div>
+    <a href="/enter">
+        <button class="buttons">Sign in</button>
+    </a>
+</div>
+<div>
+    <a href="/register">
+        <button class="buttons">Register</button>
+    </a>
+</div>
 
 
 </body>
