@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -85,8 +85,9 @@
         <input class="input-text" type="text" name="secondName" aria-valuemin="3" aria-valuemax="20" placeholder="Last Name"><br>
         <input class="input-text" type="password" name="password" aria-valuemin="3" aria-valuemax="20" placeholder="password"><br>
         <input id="inputFile" type="file" name="image"><br>
-        <button type="submit" class="button"><p class="button-text">Add user</p></button>
+        <button type="submit" class="button" onclick="this.disabled=true; this.form.submit();"><p class="button-text">Add user</p></button>
     </form>
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
 </div>
 
 </body>

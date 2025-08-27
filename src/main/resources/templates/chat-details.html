@@ -90,9 +90,10 @@
             margin: 30px 5% 30px 80%;
         }
         #messageFromTo {
+            height: 25px;
             background: #ffff9c;
             border: 1px;
-            border-radius: 7px;
+            border-radius: 15px;
         }
         img {
             width: 60px;
@@ -139,7 +140,7 @@
             <label for="message">Message:</label>
             <input type="text" id="message" name="message" required><br><br>
 
-            <button type="submit" class="button"><p class="button-text">send</p></button>
+            <button type="submit" class="button" onclick="this.disabled=true; this.form.submit();">Send</button>
         </form>
     </ul>
 </div>

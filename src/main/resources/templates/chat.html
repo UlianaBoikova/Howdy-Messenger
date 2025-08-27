@@ -124,7 +124,7 @@
             <input type="text" id="message" name="message" required><br><br>
         </p>
 
-        <button type="submit" class="button">Send</button>
+        <button type="submit" class="button" onclick="this.disabled=true; this.form.submit();">Send</button>
     </form>
     <h1 id="messages">Messages:</h1>
     <!-- ...
