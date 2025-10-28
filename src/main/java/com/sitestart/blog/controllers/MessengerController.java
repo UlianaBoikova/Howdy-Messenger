@@ -29,11 +29,6 @@ public class MessengerController {
     @Autowired
     private UserRepository userRepository;
 
-    public MessengerController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-
     /**
       Returns sign in page
       @return "enter.html"
